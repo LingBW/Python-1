@@ -13,21 +13,21 @@ def basemap_region(region):
     path="" # Y:/bathy/"#give the path if these data files are store elsewhere
     #if give the region, choose the filename
     if region=='sne':
-        filename='/net/data5/jmanning/bathy/sne_coast.dat'
+        filename='sne_coast.dat'
     if region=='cc':
-        filename='/net/data5/jmanning/bathy/capecod_outline.dat'
+        filename='capecod_outline.dat'
     if region=='bh':
-        filename='/net/data5/jmanning/bathy/bostonharbor_coast.dat'
+        filename='bostonharbor_coast.dat'
     if region=='cb':
         filename='cascobay_coast.dat'
     if region=='pb':
         filename='penbay_coast.dat'
     if region=='ma': # mid-atlantic
-        filename='/net/data5/jmanning/bathy/necscoast_noaa.dat'
+        filename='necscoast_noaa.dat'
     if region=='ne': # northeast
-        filename='/net/data5/jmanning/bathy/necoast_noaa.dat'   
+        filename='necoast_noaa.dat'   
     if region=='wv': # world vec
-        filename='/net/data5/jmanning/bathy/necscoast_worldvec.dat'        
+        filename='necscoast_worldvec.dat'        
     
     #open the data
     f=open(path+filename)
@@ -50,6 +50,8 @@ def basemap_region(region):
         plt.plot(lon_plot,lat_plot,'r') 
 
 def clickmap(n):
+   # this allows users to click on a rough map and define lat/lon points
+   # where "n" is the number of points
    fig=plt.figure()
    basemap_region('cc')
    pt=fig.ginput(n)
