@@ -40,6 +40,8 @@ DAYS = 1                     # Number or None. Length of time wanted in track, i
 MODEL = 'FVCOM'               # 'FVCOM', 'ROMS' or 'BOTH'
 GRID = 'massbaya'                # '30yr', 'massbaya', 'GOM3a', 'GOM3' or 'massbay'(where both 'GOM3' and 'massbay' are forecast), only used in fvcom.
 OUTPUTDIR='/net/nwebserver/epd/ocean/MainPage/track/ccbay/'
+obj_points_data = {'latitude':[41.801167,41.807005],'longitude':[-70.529587,-70.534930]} 
+obj_points = pd.DataFrame(obj_points_data,index=['A','B'],columns=['latitude','longitude'])
 ##################  END OF HARCODE SECTION ######################
 
 if option==1: # specified drifters
@@ -147,6 +149,7 @@ for ID in drifter_ids:
         print 'The separation of roms was %f kilometers for drifter %s' % (dist_roms[0], ID)
         ax.plot(points_roms['lon'],points_roms['lat'], 'go-', label='roms')
 
+ax.plot(obj_points['longitude'],obj_points['latitude'],'c.',label='object point',markersize=20)
 if option==1:
       plt.title('ID: {0}, {1} to {2}'.format(ID, starttime.strftime("%m/%d/%Y %H:%M"), endtime.strftime("%m/%d/%Y %H:%M")))
 else:
